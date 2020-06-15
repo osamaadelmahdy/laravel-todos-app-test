@@ -28,3 +28,11 @@ Route::get('todos/{id}', "todosController@show");
 Route::get('/create', "todosController@create");
 
 Route::post('/create', "todosController@store");
+
+Route::get('todos/{id}/edit',"todosController@edit" );
+
+Route::post('todos/{id}',"todosController@update" );
+
+Route::get('todos/{id}/delete',"todosController@destroy" );
+
+Route::get('todos/{id}/completed', "todosController@completed");

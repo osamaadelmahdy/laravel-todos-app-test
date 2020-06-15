@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title','Create todo')
+@section('title','Edit todo')
 
 @section('content')
 <div class="container">
@@ -10,28 +10,28 @@
 
         <div class="card">
             <div class="card-header">
-                <h1 class="text-center ">Create todo</h1>
+                <h1 class="text-center ">Edit todo</h1>
             </div>
                 <div class="card-body">
-                    <form action="/create" method="POST">
+                <form action="/todos/{{$todoItem->id}}" method="POST">
                         @csrf
 
                         <div class="form-group">
-                            <input type="text" class="form-control" name="title" placeholder="Add Todo" class="@error('title') is-invalid @enderror">
+                        <input type="text" class="form-control" name="title" value="{{$todoItem->title}}" class="@error('title') is-invalid @enderror">
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" name="description" placeholder="Add discription" class="@error('description') is-invalid @enderror"></textarea>
+                        <textarea class="form-control" name="description" class="@error('description') is-invalid @enderror">{{$todoItem->description}}</textarea>
                             @error('description')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary" style="width: 40%">Create</button>
+                            <button type="submit" class="btn btn-primary" style="width: 40%">Edit</button>
                         </div>
 
                     </form>
